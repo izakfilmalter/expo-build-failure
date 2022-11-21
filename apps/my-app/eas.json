@@ -1,0 +1,56 @@
+{
+  "cli": {
+    "version": ">= 2.7.0",
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "base": {
+      "node": "16.13.2",
+      "yarn": "3.2.2",
+      "android": {
+        "image": "ubuntu-18.04-jdk-11-ndk-r19c"
+      },
+      "ios": {
+        "image": "latest"
+      }
+    },
+    "dev-local": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "NODE_ENV": "twigs-dev"
+      },
+      "ios": {
+        "image": "latest"
+      }
+    },
+    "prod-local": {
+      "extends": "dev-local",
+      "env": {
+        "NODE_ENV": "twigs-prod"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "env": {
+        "NODE_ENV": "twigs-prod",
+        "RELEASE": "true",
+        "FLIPPER_DISABLE": "1"
+      },
+      "distribution": "internal",
+      "channel": "preview"
+    },
+    "production": {
+      "extends": "base",
+      "autoIncrement": true,
+      "env": {
+        "NODE_ENV": "twigs-prod",
+        "RELEASE": "true",
+        "FLIPPER_DISABLE": "1"
+      },
+      "channel": "production"
+    }
+  }
+}
