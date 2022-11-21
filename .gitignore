@@ -1,0 +1,5 @@
+/apps/my-app/ios
+/apps/my-app/android
+.yarn/cache
+node_modules
+.idea
